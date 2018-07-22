@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'cnblogs.pipelines.MySQLStoreCnblogsPipeline': 300,
+    'PiSpider.pipelines.DmhyRSSPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -88,10 +88,3 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-
-# start MySQL database configure setting
-MYSQL_HOST = 'localhost'
-MYSQL_DBNAME = 'dmhydb'
-MYSQL_USER = 'root'
-MYSQL_PASSWD = 'root'
-# end of MySQL database configure setting

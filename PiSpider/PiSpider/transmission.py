@@ -3,13 +3,17 @@
 import subprocess
 import os
 
+base_path = "/home/osmc/hdd/download/"
+
 def Add_Torrent(url,location):
     transmission_add_torrent = ['/usr/bin/transmission-remote', "-n", "transmission:transmission",]
-
+    abs_path = base_path + str(location)+'/'
+    if not os.path.isdir(abs_path):
+        cl.creat_folder(abs_path)
     transmission_add_torrent.append("--add")
     transmission_add_torrent.append(url)
     transmission_add_torrent.append("-w")
-    transmission_add_torrent.append(location)
+    transmission_add_torrent.append(abs_path)
     return subprocess.call(transmission_add_torrent)
 
 def List_Torrent():

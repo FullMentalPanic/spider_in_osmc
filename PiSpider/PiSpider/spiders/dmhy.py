@@ -12,10 +12,10 @@ class dmhyspider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        with open("./PiSpider/config.yml","r", encoding="utf8") as refile:
+        with open("PiSpider/config.yml","r", encoding="utf8") as refile:
             cfg = yaml.load(refile)
         my_spider = cfg['dmhy_rss_spider']
-        print (my_spider)
+        #print (my_spider)
         re_list = my_spider['re']
         name = my_spider['name']
         item = PispiderItem()

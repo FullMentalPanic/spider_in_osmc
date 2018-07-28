@@ -4,12 +4,15 @@ import subprocess
 import os
 
 base_path = "/home/osmc/hdd/download/"
+def creat_folder(dir):
+    subprocess.call(['mkdir',dir])
+    subprocess.call(['sudo','chmod', '-R', '777', dir])
 
 def Add_Torrent(url,location):
     transmission_add_torrent = ['/usr/bin/transmission-remote', "-n", "transmission:transmission",]
     abs_path = base_path + str(location)+'/'
     if not os.path.isdir(abs_path):
-        cl.creat_folder(abs_path)
+        creat_folder(abs_path)
     transmission_add_torrent.append("--add")
     transmission_add_torrent.append(url)
     transmission_add_torrent.append("-w")

@@ -2,6 +2,7 @@
 sleep 10s
 sudo mount /dev/sda1 /home/osmc/hdd/
 sudo service transmission-daemon start
+sleep 10s
 source /home/osmc/script/env/bin/activate
 cd /home/osmc/script/PiSpider/
 pwd

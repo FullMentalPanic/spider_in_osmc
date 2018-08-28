@@ -62,8 +62,9 @@ if __name__=="__main__":
     try:
         P = PiFanControl()
         P.start()
+        time.sleep(60)
         while True:
-            remove_transmission_finish_work()
+            #remove_transmission_finish_work()
             process = CrawlerProcess(get_project_settings())
             process.crawl('dmhy_rss')
             process.start() # the script will block here until the crawling is finished

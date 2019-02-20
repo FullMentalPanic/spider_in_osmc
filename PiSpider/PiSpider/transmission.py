@@ -32,11 +32,45 @@ class Transmission_control(object):
         subprocess.call(['sudo','chmod', '-R', '777', dir])
 
     def remove_finish_torrent(self):
-        for torrent in self.tc.get_torrents():
-            if torrent.isFinished is True:
-                self.tc.remove_torrent(torrent.id)
-            else:
-                pass
+        import subprocess
+ 
+        def List_Torrent():
+            transmission_list = ["/usr/bin/transmission-remote -n transmission:transmission -l"]
+            temp, err = subprocess.Popen(transmission_list, stdout = subprocess.PIPE, stderr = subprocess.PIPE, shell=True).communicate()
+            var = []
+            temp = str(temp)
+            #print (temp)
+            for line in temp.split('\\n'):
+                print (line)
+                var.append(line)
+            var.pop(-1)
+            var.pop(-1)
+            var.pop(0)
+            return var
+            
+        def Romove_Torrent(id):
+            transmission_remove = ['/usr/bin/transmission-remote', "-n", "transmission:transmission",]
+            temp = str(id)
+            transmission_remove.append(temp)
+            temp = '-r'
+            transmission_remove.append(temp)
+            subprocess.call(transmission_remove)  
+
+        check_list =  List_Torrent()
+
+        if not check_list:
+            pass
+        else:
+            ID ='-t'
+            for item in check_list:
+                #print (temp)
+                temp = item.split()
+                if temp[4] == 'Done':
+                    ID = ID+temp[0]+','
+                else:
+                    pass
+            if ID != '-t':
+                Romove_Torrent(ID)
 
     def close(self):
         self.tc = None

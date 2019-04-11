@@ -21,7 +21,7 @@ class Transmission_control(object):
             raise Exception("time out")
 
     def download_torrent(self, torrent, location):
-        base_path = "/home/osmc/hdd/download/"
+        base_path = "/downloads/"
         abs_path = base_path + str(location)+'/'
         if not os.path.isdir(abs_path):
             self.creat_folder(abs_path)

@@ -1,9 +1,5 @@
 #!/bin/bash
-sleep 10s
-sudo mount /dev/sda1 /home/osmc/hdd/
-sudo service transmission-daemon start
-sleep 10s
-source /home/osmc/script/env/bin/activate
-cd /home/osmc/script/PiSpider/
+git pull https://github.com/FullMentalPanic/spider_in_osmc/blob/master/PiSpider/PiSpider/config.yml
+cd /spider_in_osmc/PiSpider/
 pwd
-sudo python3 main.py
+python3 main.py

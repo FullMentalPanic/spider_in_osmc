@@ -29,7 +29,7 @@ class Transmission_control(object):
 
     def creat_folder(self, dir):
         subprocess.call(['mkdir',dir])
-        subprocess.call(['sudo','chmod', '-R', '777', dir])
+        subprocess.call(['chmod', '-R', '777', dir])
 
     def remove_finish_torrent(self):
         import subprocess

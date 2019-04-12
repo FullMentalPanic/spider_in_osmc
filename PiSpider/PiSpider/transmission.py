@@ -11,7 +11,7 @@ class Transmission_control(object):
         self.tc = None
         while count <3:
             try:
-                self.tc = transmissionrpc.Client('localhost', port=9091, user = 'transmission', password = 'transmission')
+                self.tc = transmissionrpc.Client('192.168.1.101', port=9091, user = 'transmission', password = 'transmission')
             except transmissionrpc.error.TransmissionError:
                 time.sleep(60)
                 count = count + 1

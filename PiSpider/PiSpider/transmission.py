@@ -22,7 +22,7 @@ class Transmission_control(object):
 
     def download_torrent(self, torrent, location):
         base_path = "/downloads/"
-        abs_path = base_path + str(location)+'/'
+        abs_path = (base_path + str(location)+'/').encode('utf-8')
         if not os.path.isdir(abs_path):
             self.creat_folder(abs_path)
         self.tc.add_torrent(torrent,download_dir=abs_path)

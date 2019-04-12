@@ -17,7 +17,7 @@ import PiSpider.settings as settings
 class DmhyRSSPipeline(object):
     def open_spider(self, spider):
         self.queue = []
-        self.file = codecs.open('PiSpider/' + spider.name+'.txt','r+')
+        self.file = codecs.open('/' + spider.name+'.txt','r+')
         for line in self.file:
             self.queue.append(line)
         self.rpc = Transmission_control()

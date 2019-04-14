@@ -28,7 +28,7 @@ class Transmission_control(object):
         #self.tc.add_torrent(torrent,download_dir=abs_path)
         transmission_add_torrent = ['/usr/bin/transmission-remote', "-n", "transmission:transmission",]
         transmission_add_torrent.append("--add")
-        transmission_add_torrent.append((torrent)
+        transmission_add_torrent.append(torrent)
         transmission_add_torrent.append("-w")
         transmission_add_torrent.append(abs_path)
         subprocess.call(transmission_add_torrent)

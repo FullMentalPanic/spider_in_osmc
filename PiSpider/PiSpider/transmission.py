@@ -2,23 +2,12 @@
 # all linux cmd used in python code
 import subprocess
 import os
-import transmissionrpc
+#import transmissionrpc
 import time
 
 class Transmission_control(object):
     def __init__(self):
-        count = 0
-        self.tc = None
-        while count <3:
-            try:
-                self.tc = transmissionrpc.Client('192.168.1.101', port=9091, user = 'transmission', password = 'transmission')
-            except transmissionrpc.error.TransmissionError:
-                time.sleep(60)
-                count = count + 1
-            else:
-                break
-        if count >=3:
-            raise Exception("time out")
+        print("Transmission is start....")
 
     def download_torrent(self, torrent, location):
         base_path = "/downloads/"
@@ -37,32 +26,30 @@ class Transmission_control(object):
         subprocess.call(['mkdir',dir])
         subprocess.call(['chmod', '-R', '777', dir])
 
-    def remove_finish_torrent(self):
-        import subprocess
- 
-        def List_Torrent():
-            transmission_list = ["/usr/bin/transmission-remote -n transmission:transmission -l"]
-            temp, err = subprocess.Popen(transmission_list, stdout = subprocess.PIPE, stderr = subprocess.PIPE, shell=True).communicate()
-            var = []
-            temp = str(temp)
-            #print (temp)
-            for line in temp.split('\\n'):
-                print (line)
-                var.append(line)
-            var.pop(-1)
-            var.pop(-1)
-            var.pop(0)
-            return var
-            
-        def Romove_Torrent(id):
-            transmission_remove = ['/usr/bin/transmission-remote', "-n", "transmission:transmission",]
-            temp = str(id)
-            transmission_remove.append(temp)
-            temp = '-r'
-            transmission_remove.append(temp)
-            subprocess.call(transmission_remove)  
+    def List_Torrent(self):
+        transmission_list = ["/usr/bin/transmission-remote -n transmission:transmission -l"]
+        temp, err = subprocess.Popen(transmission_list, stdout = subprocess.PIPE, stderr = subprocess.PIPE, shell=True).communicate()
+        var = []
+        temp = str(temp)
+        #print (temp)
+        for line in temp.split('\\n'):
+            print (line)
+            var.append(line)
+        var.pop(-1)
+        var.pop(-1)
+        var.pop(0)
+        return var
 
-        check_list =  List_Torrent()
+    def Romove_Torrent(self,id):
+        transmission_remove = ['/usr/bin/transmission-remote', "-n", "transmission:transmission",]
+        temp = str(id)
+        transmission_remove.append(temp)
+        temp = '-r'
+        transmission_remove.append(temp)
+        subprocess.call(transmission_remove)  
+
+    def remove_finish_torrent(self): 
+        check_list =  self.List_Torrent()
 
         if not check_list:
             pass
@@ -76,7 +63,7 @@ class Transmission_control(object):
                 else:
                     pass
             if ID != '-t':
-                Romove_Torrent(ID)
+                self.Romove_Torrent(ID)
 
     def close(self):
         self.tc = None

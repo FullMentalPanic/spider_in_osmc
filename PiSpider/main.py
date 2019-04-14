@@ -25,7 +25,6 @@ if debug:
 
 if __name__=="__main__":
 
-    #remove_transmission_finish_work()
     process = CrawlerProcess(get_project_settings())
     process.crawl('dmhy_rss')
     process.start() # the script will block here until the crawling is finished

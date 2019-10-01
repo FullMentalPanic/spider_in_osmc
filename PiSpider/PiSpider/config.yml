@@ -3,7 +3,7 @@ dmhy_rss_spider:
     - 海贼王
     - 黑色五叶草
   re:
-    - .+(?=.Skytree)(?=.*ONE PIECE 海贼王)(?=.*720P)(?=.*GB_JP)(?=.*MP4)(?=.*CRRIP)
+    - .+(?=.Skytree)(?=.*ONE PIECE 海贼王)(?=.*X264)(?=.*720P)(?=.*GB_JP)(?=.*MP4)(?=.*CRRIP)
     - .+(?=.*DMHY)(?=.*黑色五葉草)(?=.*繁體)(?=.*720P)(?=.*MP4)
 
 
